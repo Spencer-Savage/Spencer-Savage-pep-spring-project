@@ -1,4 +1,15 @@
 package com.example.repository;
 
-public interface MessageRepository {
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.example.entity.Message;
+
+@Repository
+public interface MessageRepository extends JpaRepository<Message, Integer>  {
+    Optional<Message> getMessageByMessageId(Integer messageId);
+    Optional<List<Message>> findByPostedBy(Integer accountId);
 }
